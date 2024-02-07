@@ -1,0 +1,7 @@
+_includes:
+  credits.html:
+    title:
+      en: "Technical Credits - CollectionBuilder"
+      es: "Créditos Técnicos - CollectionBuilder"
+      de: "Technische Credits - CollectionBuilder"
+    
