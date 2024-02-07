@@ -14,6 +14,8 @@ Set the default language with the `lang` field in `_config.yml` using two-letter
 
 Translations are managed in the `_data/translations.yml` file, linking GUI elements to their respective translations. Each field has a default English value in the HTML file, replaced with the appropriate translation based on the defined language.
 
+If you want to localize the datatables you need to download the language file from the [datatables website](https://datatables.net/plug-ins/i18n/) and add it to the `lib/datatables` folder with the same name as the language code.
+
 ## File Structure
 
 Each GUI element or label is translated individually. The structure of the `_data/translations.yml` file is as follows:
