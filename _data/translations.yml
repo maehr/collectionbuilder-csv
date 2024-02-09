@@ -1,16 +1,224 @@
 _includes:
-  credits.html:
-    title:
-      en: "Technical Credits - CollectionBuilder"
-      es: "Créditos Técnicos - CollectionBuilder"
-      de: "Technische Credits - CollectionBuilder"
-    content:
-      en: |
-        <p>This digital collection is built with <a href="https://collectionbuilder.github.io/" target="_blank" rel="noopener">CollectionBuilder</a>, an open source framework for creating digital collection and exhibit websites that is developed by faculty librarians at the University of Idaho Library following the <a href="https://lib-static.github.io" target="_blank" rel="noopener">Lib-Static</a> methodology.</p>
-        <p>Using the <a href="https://github.com/CollectionBuilder/collectionbuilder-csv" target="_blank" rel="noopener">CollectionBuilder-CSV</a> template and the static website generator <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>, this project creates an engaging interface to explore driven by metadata.</p>
-      es: |
-        <p>Esta colección digital está construida con <a href="https://collectionbuilder.github.io/" target="_blank" rel="noopener">CollectionBuilder</a>, un marco de código abierto para crear sitios web de colecciones digitales y exhibiciones que es desarrollado por bibliotecarios docentes en la Biblioteca de la Universidad de Idaho siguiendo la metodología <a href="https://lib-static.github.io" target="_blank" rel="noopener">Lib-Static</a>.</p>
-        <p>Usando la plantilla <a href="https://github.com/CollectionBuilder/collectionbuilder-csv" target="_blank" rel="noopener">CollectionBuilder-CSV</a> y el generador de sitios web estáticos <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>, este proyecto crea una interfaz atractiva para explorar impulsada por metadatos.</p>
-      de: |
-        <p>Diese digitale Sammlung wurde mit <a href="https://collectionbuilder.github.io/" target="_blank" rel="noopener">CollectionBuilder</a> erstellt, einem Open-Source-Framework zur Erstellung von Websites für digitale Sammlungen und Ausstellungen, das von Fachbibliothekaren der Universitätsbibliothek Idaho entwickelt wurde und der <a href="https://lib-static.github.io" target="_blank" rel="noopener">Lib-Static</a>-Methodik folgt.</p>
-        <p>Mit der Vorlage <a href="https://github.com/CollectionBuilder/collectionbuilder-csv" target="_blank" rel="noopener">CollectionBuilder-CSV</a> und dem statischen Website-Generator <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> erstellt dieses Projekt eine ansprechende Benutzeroberfläche, die durch Metadaten gesteuert wird.</p>
+  cb:
+    credits.html:
+      title:
+        en: "Technical Credits - CollectionBuilder"
+        es: "Créditos Técnicos - CollectionBuilder"
+        de: "Technische Credits - CollectionBuilder"
+      content:
+        en: |
+          <p>This digital collection is built with <a href="https://collectionbuilder.github.io/" target="_blank" rel="noopener">CollectionBuilder</a>, an open source framework for creating digital collection and exhibit websites that is developed by faculty librarians at the University of Idaho Library following the <a href="https://lib-static.github.io" target="_blank" rel="noopener">Lib-Static</a> methodology.</p>
+          <p>Using the <a href="https://github.com/CollectionBuilder/collectionbuilder-csv" target="_blank" rel="noopener">CollectionBuilder-CSV</a> template and the static website generator <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>, this project creates an engaging interface to explore driven by metadata.</p>
+        es: |
+          <p>Esta colección digital está construida con <a href="https://collectionbuilder.github.io/" target="_blank" rel="noopener">CollectionBuilder</a>, un marco de código abierto para crear sitios web de colecciones digitales y exhibiciones que es desarrollado por bibliotecarios docentes en la Biblioteca de la Universidad de Idaho siguiendo la metodología <a href="https://lib-static.github.io" target="_blank" rel="noopener">Lib-Static</a>.</p>
+          <p>Usando la plantilla <a href="https://github.com/CollectionBuilder/collectionbuilder-csv" target="_blank" rel="noopener">CollectionBuilder-CSV</a> y el generador de sitios web estáticos <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>, este proyecto crea una interfaz atractiva para explorar impulsada por metadatos.</p>
+        de: |
+          <p>Diese digitale Sammlung wurde mit <a href="https://collectionbuilder.github.io/" target="_blank" rel="noopener">CollectionBuilder</a> erstellt, einem Open-Source-Framework zur Erstellung von Websites für digitale Sammlungen und Ausstellungen, das von Fachbibliothekaren der Universitätsbibliothek Idaho entwickelt wurde und der <a href="https://lib-static.github.io" target="_blank" rel="noopener">Lib-Static</a>-Methodik folgt.</p>
+          <p>Mit der Vorlage <a href="https://github.com/CollectionBuilder/collectionbuilder-csv" target="_blank" rel="noopener">CollectionBuilder-CSV</a> und dem statischen Website-Generator <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> erstellt dieses Projekt eine ansprechende Benutzeroberfläche, die durch Metadaten gesteuert wird.</p>
+      more:
+        en: "More Information Available"
+        es: "Más información disponible"
+        de: "Weitere Informationen verfügbar"
+      technical:
+        en: "Technical Specifications"
+        es: "Especificaciones Técnicas"
+        de: "Technische Spezifikationen"
+      grant:
+        en: "IMLS Support"
+        es: "Apoyo de IMLS"
+        de: "IMLS-Unterstützung"
+  feature:
+    accordion.html:
+    alert.html:
+    audio.html:
+      error:
+        en: "Your browser does not support the audio element."
+        es: "Su navegador no admite el elemento de audio."
+        de: "Ihr Browser unterstützt das Audio-Element nicht."
+    blockquote.html:
+    button.html:
+    card.html:
+    cloud.html:
+    icon.html:
+    image.html:
+      click:
+        en: "click to see item"
+        es: "haga clic para ver el elemento"
+        de: "klicken Sie, um das Element zu sehen"
+    jumbotron.html:
+    mini-map.html:
+    modal.html:
+    nav-menu.html:
+      contents:
+        en: "Contents"
+        es: "Contenidos"
+        de: "Inhalt"
+      tech:
+        en: "Tech"
+        es: "Técnico"
+        de: "Technisch"
+    pdf.html:
+      error:
+        en: "Your browser does not support the PDF viewer."
+        es: "Su navegador no admite el visor de PDF."
+        de: "Ihr Browser unterstützt den PDF-Viewer nicht."
+      download:
+        en: "Download PDF"
+        es: "Descargar PDF"
+        de: "PDF herunterladen"
+    timelinejs.html:
+    video.html:
+      error:
+        en: "Your browser does not support the video tag."
+        es: "Su navegador no admite la etiqueta de video."
+        de: "Ihr Browser unterstützt das Video-Tag nicht."
+  head:
+    analytics.html:
+    head.html:
+    item-meta.html:
+    page-meta.html:
+  index:
+    carousel.html:
+    data-download.html:
+      title:
+        en: "Collection as Data <small>(click to download)</small>"
+        es: "Colección como Datos <small>(haga clic para descargar)</small>"
+        de: "Sammlung als Daten <small>(klicken Sie, um herunterzuladen)</small>"
+      metadata:
+        en: "Metadata"
+        es: "Metadatos"
+        de: "Metadaten"
+      subjects:
+        en: "Subjects"
+        es: "Temas"
+        de: "Themen"
+      geodata:
+        en: "Geodata"
+        es: "Geodatos"
+        de: "Geodaten"
+      locations:
+        en: "Locations"
+        es: "Ubicaciones"
+        de: "Standorte"
+      timeline:
+        en: "Timeline"
+        es: "Línea de tiempo"
+        de: "Zeitleiste"
+      facets:
+        en: "Facets"
+        es: "Facetas"
+        de: "Facetten"
+      source-code:
+        en: "Source Code"
+        es: "Código Fuente"
+        de: "Quellcode"
+    description.html:
+      title:
+        en: "Description"
+        es: "Descripción"
+        de: "Beschreibung"
+      learn-more:
+        en: "Learn More &raquo;"
+        es: "Aprende más &raquo;"
+        de: "Erfahren Sie mehr &raquo;"
+    featured-terms.html:
+    objects.html:
+      title:
+        en: "Objects"
+        es: "Objetos"
+        de: "Objekte"
+      image:
+        en: "Image(s)"
+        es: "Imagen(es)"
+        de: "Bild(er)"
+      audio:
+        en: "Audio File(s)"
+        es: "Archivo(s) de Audio"
+        de: "Audiodatei(en)"
+      video:
+        en: "Video File(s)"
+        es: "Archivo(s) de Video"
+        de: "Videodatei(en)"
+      pdf:
+        en: "PDF File(s)"
+        es: "Archivo(s) PDF"
+        de: "PDF-Datei(en)"
+      panorama:
+        en: "Panorama(s)"
+        es: "Panorama(s)"
+        de: "Panorama(s)"
+      record:
+        en: "Record(s)"
+        es: "Registro(s)"
+        de: "Datensatz(e)"
+      compound_object:
+        en: "Compound Object(s)"
+        es: "Objeto(s) Compuesto(s)"
+        de: "Verbundobjekt(e)"
+      multiple:
+        en: "Multiple"
+        es: "Múltiple"
+        de: "Mehrere"
+      file:
+        en: "File(s)"
+        es: "Archivo(s)"
+        de: "Datei(en)"
+      view_table:
+        en: "View table"
+        es: "Ver tabla"
+        de: "Tabelle anzeigen"
+    time.html:
+      title:
+        en: "Time Span"
+        es: "Período de Tiempo"
+        de: "Zeitspanne"
+      view-timeline:
+        en: "View Timeline"
+        es: "Ver Línea de Tiempo"
+        de: "Zeitleiste anzeigen"
+  item:
+    child:
+      audio-player.html:
+        error:
+          en: "Your browser does not support the audio player."
+          es: "Su navegador no admite el reproductor de audio."
+          de: "Ihr Browser unterstützt den Audioplayer nicht."
+        download:
+          en: "Download Audio File"
+          es: "Descargar Archivo de Audio"
+          de: "Audiodatei herunterladen"
+      citation-box.html:
+        title:
+          en: "Source"
+          es: "Fuente"
+          de: "Quelle"
+        preferred-citation:
+          en: "Preferred Citation"
+          es: "Cita Preferida"
+          de: "Bevorzugte Zitierung"
+        reference-link:
+          en: "Reference Link"
+          es: "Enlace de Referencia"
+          de: "Referenzlink"
+      compound-item-download-buttons.html:
+      compound-item-modal-gallery.html:
+      download-buttons.html:
+      image-gallery.html:
+      item-thumb.html:
+      metadata.html:
+      panorama.html:
+      rights-box.html:
+      video-embed.html:
+      video-player.html:
+
+
+
+
+
+
+
+
+
+
+
+
