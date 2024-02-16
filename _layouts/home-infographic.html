@@ -8,16 +8,16 @@ layout: page
   <div class="col-md-8">
 
     {% include index/description.html %}
-    {% include index/carousel.html title="Sample Items" %}
+    {% include index/carousel.html title="{{ site.data.translations['_includes']['_layouts']['home-infographic.html']['sample-items'][site.lang] | default: 'Sample Items' }}" %}
     
   </div>
   <div class="col-md-4">  
 
     {% include index/time.html %}
 
-    {% include index/featured-terms.html field="subject" title="Top Subjects" btn-color="primary" %}
+    {% include index/featured-terms.html field="subject" title="{{ site.data.translations['_includes']['_layouts']['home-infographic.html']['top-subjects'][site.lang] | default: 'Top Subjects' }}" btn-color="primary" %}
 
-    {% include index/featured-terms.html field="location" title="Locations" btn-color="outline-secondary" %}
+    {% include index/featured-terms.html field="location" title="{{ site.data.translations['_includes']['_layouts']['home-infographic.html']['top-locations'][site.lang] | default: 'Locations' }}" btn-color="outline-secondary" %}
     
     {% include index/objects.html %}
 
