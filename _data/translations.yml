@@ -509,6 +509,10 @@ _includes:
       compound-object.html:
       image.html:
       item-page-base.html:
+        items:
+          en: "Items"
+          es: "Elementos"
+          de: "Objekte"
         item-info:
           en: "Item Information"
           es: "Información del Elemento"

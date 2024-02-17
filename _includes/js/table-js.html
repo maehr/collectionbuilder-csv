@@ -6,9 +6,9 @@
 /* use jquery to initialize DataTables and load collection data */
 $(document).ready( function () {
     $('#item-table').DataTable( {
+        {% if lang != "en" %}language: { url: '{{ "/assets/lib/datatables/" | append: lang | append: ".json" | relative_url }}' },{% endif %}
         // use DataTables ajax load 
         ajax: { url: '{{ "/assets/js/metadata.min.json" | relative_url }}', dataSrc: 'objects' },
-        {% if lang != "en" %}language: { url: '{{ "/assets/lib/datatables/" | relative_url }}' + '{{ lang }}' + '.json' },{% endif %}
         // defer render to speed up large sets
         "deferRender": true,
         // enable pagination 
