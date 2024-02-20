@@ -79,6 +79,10 @@ _includes:
     page-meta.html:
   index:
     carousel.html:
+      view-item:
+        en: "View Item"
+        es: "Ver Elemento"
+        de: "Element anzeigen"
     data-download.html:
       title:
         en: "Collection as Data <small>(click to download)</small>"
@@ -471,7 +475,6 @@ _includes:
       es: "Línea de Tiempo"
       de: "Zeitleiste"
     timeline-description:
-      # en: "A time-focused JSON data export designed for use with <a href="https://timeline.knightlab.com/" target="_blank" rel="noopener">TimelineJS</a>."
       en: "A time-focused JSON data export designed for use with <a href='https://timeline.knightlab.com/' target='_blank' rel='noopener'>TimelineJS</a>."
       es: "Una exportación de datos JSON centrada en el tiempo diseñada para su uso con <a href='https://timeline.knightlab.com/' target='_blank' rel='noopener'>TimelineJS</a>."
       de: "Ein zeitlich fokussierter JSON-Datenexport, der für die Verwendung mit <a href='https://timeline.knightlab.com/' target='_blank' rel='noopener'>TimelineJS</a> entwickelt wurde."
@@ -632,6 +635,10 @@ _includes:
         es: "Alternativamente, intente la búsqueda del sitio por"
         de: "Versuchen Sie alternativ die Websuche durch"
     timeline.html:
+      years:
+        en: "Years"
+        es: "Años"
+        de: "Jahre"
 
 
 
