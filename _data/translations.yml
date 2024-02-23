@@ -274,6 +274,10 @@ _includes:
           en: "Your browser does not support the video tag."
           es: "Su navegador no admite la etiqueta de video."
           de: "Ihr Browser unterstützt das Video-Tag nicht."
+        download:
+          en: "Download the video file"
+          es: "Descargar el archivo de video"
+          de: "Video-Datei herunterladen"
     3d-model-viewer.html:
       load-model:
         en: "Load 3D Model"
