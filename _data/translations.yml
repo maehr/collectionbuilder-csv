@@ -107,7 +107,7 @@ _includes:
       timeline:
         en: "Timeline"
         es: "Línea de tiempo"
-        de: "Zeitleiste"
+        de: "Zeitachse"
       facets:
         en: "Facets"
         es: "Facetas"
@@ -179,7 +179,7 @@ _includes:
       view-timeline:
         en: "View Timeline"
         es: "Ver Línea de Tiempo"
-        de: "Zeitleiste anzeigen"
+        de: "Zeitachse anzeigen"
   item:
     child:
       audio-player.html:
@@ -208,7 +208,7 @@ _includes:
         timeline:
           en: "View on Timeline"
           es: "Ver en la Línea de Tiempo"
-          de: "In der Zeitleiste anzeigen"
+          de: "In der Zeitachse anzeigen"
         map:
           en: "View on Map"
           es: "Ver en el Mapa"
@@ -230,7 +230,7 @@ _includes:
         timeline:
           en: "View on Timeline"
           es: "Ver en la Línea de Tiempo"
-          de: "In der Zeitleiste anzeigen"
+          de: "In der Zeitachse anzeigen"
         map:
           en: "View on Map"
           es: "Ver en el Mapa"
@@ -335,7 +335,7 @@ _includes:
       timeline:
         en: "View on Timeline"
         es: "Ver en la Línea de Tiempo"
-        de: "In der Zeitleiste anzeigen"
+        de: "In der Zeitachse anzeigen"
       map:
         en: "View on Map"
         es: "Ver en el Mapa"
@@ -477,7 +477,7 @@ _includes:
     timeline:
       en: "Timeline"
       es: "Línea de Tiempo"
-      de: "Zeitleiste"
+      de: "Zeitachse"
     timeline-description:
       en: "A time-focused JSON data export designed for use with <a href='https://timeline.knightlab.com/' target='_blank' rel='noopener'>TimelineJS</a>."
       es: "Una exportación de datos JSON centrada en el tiempo diseñada para su uso con <a href='https://timeline.knightlab.com/' target='_blank' rel='noopener'>TimelineJS</a>."
