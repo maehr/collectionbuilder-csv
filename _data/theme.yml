@@ -19,6 +19,11 @@ home-banner-image-position: center # Default is top
 #
 # see _data/metadata-config.csv to define the metadata fields that will display.
 browse-buttons: true # true / false, adds previous/next arrows to items, but increases build time
+trigger-warning: true # true / false, adds trigger warning to item pages
+trigger-warning-text: "This item may contains sensitive content."
+trigger-field: "subject" # field to trigger warning, e.g. "subject"
+trigger-terms: "Success,violence,sexuality,racism,discrimination" # set of subjects separated by , that will trigger warning, e.g. violence,sexuality,racism,discrimination
+
 
 ##########
 # SUBJECTS PAGE
