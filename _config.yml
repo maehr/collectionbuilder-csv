@@ -10,7 +10,7 @@
 # site domain, full URL to the production location of your collection
 url: https://forschung.stadtgeschichtebasel.ch/
 # path to location on the domain if necessary e.g. /digital/hjccc
-baseurl:
+# baseurl:
 # location of code, the full url to your github repository
 source-code: https://github.com/Stadt-Geschichte-Basel/forschung.stadtgeschichtebasel.ch
 
