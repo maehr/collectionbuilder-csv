@@ -399,6 +399,10 @@ _includes:
     cloud-js.html:
     get-icon.js:
     lunr-js.html:
+      results-found:
+        en: "Result(s) found"
+        es: "Resultado(s) encontrado(s)"
+        de: "Ergebnis(se) gefunden"
     map-js.html:
       view-item:
         en: "View Item"
