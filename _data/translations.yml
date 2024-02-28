@@ -634,6 +634,14 @@ _includes:
         en: "Boost term: add <code>^</code> plus a number to boost the relevance of a term in your query, e.g. <code>foo^10</code>. This can help reduce clutter of unrelated results if one of your terms is most important."
         es: "Término de impulso: agregue <code>^</code> más un número para aumentar la relevancia de un término en su consulta, por ejemplo <code>foo^10</code>. Esto puede ayudar a reducir el desorden de resultados no relacionados si uno de sus términos es el más importante."
         de: "Begriff verstärken: Fügen Sie <code>^</code> plus eine Zahl hinzu, um die Relevanz eines Begriffs in Ihrer Abfrage zu erhöhen, z.B. <code>foo^10</code>. Dies kann helfen, das Durcheinander von nicht verwandten Ergebnissen zu reduzieren, wenn einer Ihrer Begriffe am wichtigsten ist."
+      enter-term:
+        en: "Enter your search term..."
+        es: "Ingrese su término de búsqueda..."
+        de: "Geben Sie Ihren Suchbegriff ein..."
+      search:
+        en: "Search"
+        es: "Buscar"
+        de: "Suche"
       powered-by:
         en: "Fuzzy search powered by <a href='https://lunrjs.com/' target='_blank' rel='noopener'>Lunr.js</a>. <em>May take a second to load large collections!</em>"
         es: "Búsqueda difusa proporcionada por <a href='https://lunrjs.com/' target='_blank' rel='noopener'>Lunr.js</a>. <em>¡Puede tardar un segundo en cargar colecciones grandes!</em>"
