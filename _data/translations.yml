@@ -549,6 +549,14 @@ _layouts:
     video.html:
   about.html:
   browse.html:
+    filter:
+      en: "Filter"
+      es: "Filtrar"
+      de: "Filter"
+    filter-items:
+      en: "Filter items"
+      es: "Filtrar elementos"
+      de: "Elemente filtern"
     search:
       en: "Search"
       es: "Buscar"
