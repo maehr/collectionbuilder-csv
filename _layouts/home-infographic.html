@@ -3,13 +3,10 @@
 layout: page
 ---
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
-<<<<<<< HEAD
-=======
 {%- assign sample_items = site.data.translations['_layouts']['home-infographic.html']['sample-items'][site.lang] | default: 'Sample Items' -%}
 {%- assign top_subjects = site.data.translations['_layouts']['home-infographic.html']['top-subjects'][site.lang] | default: 'Top Subjects' -%}
 {%- assign locations = site.data.translations['_layouts']['home-infographic.html']['locations'][site.lang] | default: 'Locations' -%}
 
->>>>>>> aeff727 (fix: translations fixed and added)
 <div class="row">
 
   <div class="col-md-8">
