@@ -6,12 +6,13 @@ custom-foot: js/browse-js.html
 
 {{ content }}
 
+{% if site.data.theme.trigger-warning %}
+<div class="alert alert-danger" role="alert" id="trigger-warning">
+    {{ site.data.theme.trigger-warning-text | default: "This collection may contain sensitive content." }}
+</div>
+{% endif %}
+
 <div class="row mb-3 justify-content-center">
-    {% if site.data.theme.trigger-warning %}
-    <div class="alert alert-danger" role="alert" id="trigger-warning">
-        {{ site.data.theme.trigger-warning-text | default: "This collection may contain sensitive content." }}
-    </div>
-    {% endif %}
     <div class="col-md-8 text-center">
         <form role="search" id="lunrSearch" onsubmit="submitFilter(); return false;">
             <div class="input-group input-group-lg">
