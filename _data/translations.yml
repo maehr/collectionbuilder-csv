@@ -403,14 +403,6 @@ _includes:
         es: "Descargar el archivo de video"
         de: "Video-Datei herunterladen"
   js:
-    filter:
-      en: "Filter"
-      es: "Filtrar"
-      de: "Filter"
-    filter-items:
-      en: "Filter items"
-      es: "Filtrar elementos"
-      de: "Elemente filtern"
     browse-js.html:
       view-full-record:
         en: "View Full Record"
