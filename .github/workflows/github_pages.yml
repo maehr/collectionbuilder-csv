@@ -36,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: cb-lang
+          ref: Cb-translate
       - name: Update Language Configuration
         run: |
           sed -i -e 's/lang: en/lang: de/g' _config.yml
