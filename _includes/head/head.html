@@ -1,7 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
-<link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
 <!--
 
   _____     ____        __  _           ___       _ __   __       
@@ -13,7 +14,7 @@
     https://github.com/CollectionBuilder/collectionbuilder-csv
 -->
 <meta name="generator" content="collectionbuilder-csv" />
-<meta http-equiv="Content-Language" content="en-us" >
+<meta http-equiv="Content-Language" content="{{ site.lang }}" >
 
 {% if site.data.theme.font-cdn %}{{ site.data.theme.font-cdn }}{%- endif -%}
 <link rel="stylesheet" href="{% if site.data.theme.bootswatch %}https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/{{ site.data.theme.bootswatch }}/bootstrap.min.css{% else %}{{ '/assets/lib/bootstrap.min.css' | relative_url }}{% endif %}" type="text/css">
