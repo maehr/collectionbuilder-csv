@@ -1,35 +1,116 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll site to Pages
+name: Deploy Jekyll site with Data Processing
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches:
-        - $default-branch
-
-  # Allows you to run this workflow manually from the Actions tab
+      - main
+      - omeka-import
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  OMEKA_API_URL: ${{ secrets.OMEKA_API_URL }}
+  KEY_IDENTITY: ${{ secrets.KEY_IDENTITY }}
+  KEY_CREDENTIAL: ${{ secrets.KEY_CREDENTIAL }}
+  ITEM_SET_ID: ${{ secrets.ITEM_SET_ID }}
+
 jobs:
-  # Build job
+  data-processing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas requests
+      - name: Process Data
+        run: |
+          import os
+          import pandas as pd
+          import requests
+          from urllib.parse import urlparse, parse_qs
+
+          OMEKA_API_URL = os.environ.get("OMEKA_API_URL")
+          KEY_IDENTITY = os.environ.get("KEY_IDENTITY")
+          KEY_CREDENTIAL = os.environ.get("KEY_CREDENTIAL")
+          ITEM_SET_ID = os.environ.get("ITEM_SET_ID")
+
+          def get_items_from_collection(collection_id):
+              url = OMEKA_API_URL + "items"
+              all_items = []
+              params = {"item_set_id": collection_id, "key_identity": KEY_IDENTITY, "key_credential": KEY_CREDENTIAL}
+
+              while True:
+                  response = requests.get(url, params=params)
+                  if response.status_code != 200:
+                      break
+
+                  # Add the items from the current page to our list
+                  all_items.extend(response.json())
+
+                  # Check if there is a 'next' page
+                  links = requests.utils.parse_header_links(response.headers.get('Link', ''))
+                  next_link = [link for link in links if link['rel'] == 'next']
+                  if not next_link:
+                      break
+
+                  # Update the URL for the next request
+                  next_url = next_link[0]['url']
+                  url_parsed = urlparse(next_url)
+                  next_params = parse_qs(url_parsed.query)
+                  params.update(next_params)
+
+              return all_items
+
+
+          def map_columns(data):
+              return [{
+                  # "media": data.get("o:media"),
+                  "objectid": data.get("dcterms:identifier", [{}])[0].get("@value"),
+                  "parentid": None,
+                  "title": data.get("dcterms:title", [{}])[0].get("@value"),
+                  "creator": data.get("dcterms:creator", [{}])[0].get("@value"),
+                  "date": data.get("dcterms:date", [{}])[0].get("@value"),
+                  "era": data.get("dcterms:temporal", [{}])[0].get("@value"),
+                  "description": data.get("dcterms:description", [{}])[0].get("@value"),
+                  "subject": "; ".join([item.get("@value", "") for item in data.get("dcterms:subject", [])]),
+                  "publisher": data.get("dcterms:publisher", [{}])[0].get("@value"),
+                  "source": data.get("dcterms:source", [{}])[0].get("@value"),
+                  "relation": data.get("dcterms:relation", [{}])[0].get("@value"),
+                  "hasVersion": data.get("dcterms:hasVersion", [{}])[0].get("@value"),
+                  "type": data.get("dcterms:type", [{}])[0].get("@id"),
+                  "format": data.get("dcterms:format", [{}])[0].get("@value"),
+                  "extent": data.get("dcterms:extent", [{}])[0].get("@value"),
+                  "language": data.get("dcterms:language", [{}])[0].get("o:label"),
+                  "rights": "; ".join([item.get("@value", "") for item in data.get("dcterms:rights", [])]),
+                  "license": data.get("dcterms:license", [{}])[0].get("@value"),
+                  "isPartOf": data.get("dcterms:isPartOf", [{}])[0].get("@value"),
+                  "isReferencedBy": data.get("dcterms:isReferencedBy", [{}])[0].get("@value"),
+                  "display_template": None,
+                  "object_location": None,
+                  # "object_location": x if (x := data.get("thumbnail_display_urls", {}).get("large")) and x.startswith("http") else None,
+                  "image_small": x if (x := data.get("thumbnail_display_urls", {}).get("large")) and x.startswith("http") else None,
+                  "image_thumb": x if (x := data.get("thumbnail_display_urls", {}).get("large")) and x.startswith("http") else None,
+                  "image_alt_text": None,
+                  "object_transcript": None
+          } for data in item_set]
+
+          item_set = get_items_from_collection(ITEM_SET_ID)
+          item_set_mapped = map_columns(item_set)
+          item_set_mapped_df = pd.DataFrame(item_set_mapped)
+          item_set_mapped_df.to_csv("/_data/sgb-metadata.csv", index=False)
+        shell: python
+
   build:
+    needs: data-processing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -37,24 +118,21 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
         with:
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
+          bundler-cache: true
+          cache-version: 0
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
       - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
-        # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
 
-  # Deployment job
   deploy:
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
