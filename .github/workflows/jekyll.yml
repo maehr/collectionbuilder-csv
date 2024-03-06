@@ -108,6 +108,11 @@ jobs:
           item_set_mapped_df = pd.DataFrame(item_set_mapped)
           item_set_mapped_df.to_csv("/_data/sgb-metadata.csv", index=False)
         shell: python
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sgb-metadata
+          path: _data/sgb-metadata.csv
 
   build:
     needs: data-processing
@@ -115,6 +120,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: sgb-metadata
+          path: _data
       - name: Setup Ruby
         uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
         with:
