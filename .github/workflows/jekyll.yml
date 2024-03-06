@@ -106,7 +106,7 @@ jobs:
           item_set = get_items_from_collection(ITEM_SET_ID)
           item_set_mapped = map_columns(item_set)
           item_set_mapped_df = pd.DataFrame(item_set_mapped)
-          item_set_mapped_df.to_csv("/_data/sgb-metadata.csv", index=False)
+          item_set_mapped_df.to_csv("_data/sgb-metadata.csv", index=False)
         shell: python
       - name: Upload artifact
         uses: actions/upload-artifact@v3
