@@ -50,27 +50,31 @@ def get_media(item_id):
         return None
     return response.json()
 
+def media_type(media_list):
+    if len(media_list) < 2:
+        return None
+    media_types = [media.get("o:media_type") for media in media_list]
+    if all([media_type.startswith("image") for media_type in media_types]):
+        return "multiple"
+    return "compound_object"
+
 
 def map_columns(item_set):
     return_list = []
     for data in item_set:
-        media_list = data.get("o:media", [])
+        media_list = [get_media(media_item.get("o:id")) for media_item in data.get("o:media", [])]
+        type = media_type(media_list)
+        media = media_list[0] if media_list else {}
+        media_data = create_media_data_dict(data, media, type)
+        return_list.append(media_data)
         if len(media_list) > 1:
-            media = get_media(media_list[0]["o:id"]) if media_list else {}
-            media_data = create_media_data_dict(data, media, "compound_object")
-            return_list.append(media_data)
-            for index, media_item in enumerate(media_list):
-                media = get_media(media_item.get("o:id"))
-                media_data = create_media_data_dict(data, media, "compound_object", index)
+            for index, media in enumerate(media_list):
+                media_data = create_media_data_dict(data, media, type, index)
                 return_list.append(media_data)
-        else:
-            media = get_media(media_list[0]["o:id"]) if media_list else {}
-            media_data = create_media_data_dict(data, media)
-            return_list.append(media_data)
     return return_list
 
 
-def create_media_data_dict(data, media, type=None, index=None):
+def create_media_data_dict(data, media, type, index=None):
     media_id_suffix = f"_{index}" if index is not None else ""
     media_url = media.get("thumbnail_display_urls", {}).get("large") if media and media.get("thumbnail_display_urls", {}).get("large", "").startswith("http") else None
 
