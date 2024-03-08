@@ -8,9 +8,9 @@
 #
 # featured image is used in home page banner and in meta markup to represent the collection
 # use either an objectid (from an item in this collect), a relative location of an image in this repo, or a full url to an image elsewhere
-featured-image: demo_001
+featured-image: 
 # optional: add extra padding around collection title for a larger image feature. 
-home-title-y-padding: 12em # the margin from the top your title portion will appear.
+home-title-y-padding: 10em # the margin from the top your title portion will appear.
 # optional: change position of background image, center, top, bottom
 home-banner-image-position: center # Default is top
 
@@ -19,13 +19,28 @@ home-banner-image-position: center # Default is top
 #
 # see _data/metadata-config.csv to define the metadata fields that will display.
 browse-buttons: true # true / false, adds previous/next arrows to items, but increases build time
+trigger-warning: true # true / false, adds trigger warning to item pages
+trigger-warning-text: "Diese Sammlung enthält sensible Inhalte. <a href='/sensible-inhalte.html'>Klicken Sie hier</a>, um mehr zu erfahren." # optional, if you want to override the default trigger warning text
+trigger-warning-text-item: "Diese Ressource enthält sensible Inhalte. <a href='/sensible-inhalte.html'>Klicken Sie hier</a>, um mehr zu erfahren." #optional, if you want to override the default trigger warning text for individual items
+trigger-field: "subject" # field to trigger warning, e.g. "subject"
+trigger-terms: "Ableismus,Abtreibungsgegner,Abtreibungsverbot,AIDS,Androgynie,Androzentrismus,Antifeminismus,Antisemitismus,Antiziganismus,Armut,Asyl,Ausbeutung,Beschneidung,Biologismus,Depression,Diskriminierung,Erotik,Essstörung,Ethnizität,Ethnozentrismus,Eurozentrismus,Faschismus,Female Genital Cutting,Female Genital Mutilation,Faschismus,Flucht,Frauenfeindlichkeit,Fundamentalismus,Gender Bias,Gender Pay Gap,Genozid,Geschlechterdifferenz,Geschlechterordnung,Geschlechterstereotyp,Gewalt,Gewalt gegen Frauen,Hass,Hermaphroditismus,Heteronormativität,HIV,Homofeindlichkeit,Konzentrationslager,Krieg,Marginalisierung,Menschenhandel,Misshandlung,Nationalsozialismus,Opfer,Pornografie,Prostitution,Rassismus,Rechtsextremismus,Schwangerschaftsabbruch,Sexarbeit,Sexismus,Sexualisierte Gewalt,Sexuelle Belästigung,Shoah,Sklaverei,Stigmatisierung,Sucht,Täter,Täterin,Terrorismus,Tod,Verfolgung,Vergewaltigung,Xenophobie,Zwang" # set of subjects separated by , that will trigger warning, e.g. violence,sexuality,racism,discrimination
+
+
+
 
 ##########
 # SUBJECTS PAGE
 #
-subjects-fields: subject;creator # set of fields separated by ; to be featured in the cloud (leave blank or comment out to not generate)
+subjects-fields: subject # set of fields separated by ; to be featured in the cloud (leave blank or comment out to not generate)
 subjects-min: 1 # min size for subject cloud, too many terms = slow load time!
 subjects-stopwords: # set of subjects separated by ; that will be removed from display, e.g. boxers;boxing
+
+##########
+# ERAS PAGE
+#
+eras-fields: era # set of fields separated by ; to be featured in the cloud (leave blank or comment out to not generate)
+eras-min: 1 # min size for subject cloud, too many terms = slow load time!
+eras-stopwords: # set of subjects separated by ; that will be removed from display, e.g. boxers;boxing
 
 ##########
 # LOCATIONS PAGE
@@ -52,14 +67,14 @@ map-cluster-radius: 25 # size of clusters, from ~ 10 to 80
 #
 # set either year-navigation or year-nav-increment to generate a year nav dropdown
 year-navigation: #"1900;1905;1910;1915;1920" # manually set years to appear in dropdown nav
-year-nav-increment: 5 # set increments to auto gen nav years
+year-nav-increment: 1 # set increments to auto gen nav years
 
 ##########
 # DATA 
 # 
 # add metadata fields for export in data downloads (tip: paste in first row of csv)
 # comma delimited list, reference url is automatic
-metadata-export-fields: "title,creator,date,description,subject,location,latitude,longitude,source,identifier,type,format,language,rights,rightsstatement"
+metadata-export-fields: "title,creator,date,description,subject,source,identifier,type,format,language,rights,rightsstatement"
 # generate a facets list for given fields, comma delimited
 metadata-facets-fields: "subject,creator,format"
 
@@ -95,11 +110,12 @@ navbar-background: bg-dark
 bootswatch: # leave blank or comment out for plain bootstrap
 
 # THEME FONTS [optional!]
-base-font-size: 1.2em
+base-font-size: 1em
 text-color: "#191919"
 link-color: "#0d6efd"
-base-font-family: # comment out for bootstrap defaults. e.g. Roboto
-font-cdn: # add font stylesheet, e.g. <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+base-font-family: "'Euclid Circular B', sans-serif;" # comment out for bootstrap defaults. e.g. Roboto
+font-cdn: "<link rel='preload' href='/assets/fonts/EuclidCircularB-Regular-WebS.woff2' as='font' type='font/woff2' crossorigin><link rel='preload' href='/assets/fonts/EuclidCircularB-Medium-WebS.woff2' as='font' type='font/woff2' crossorigin><link rel='preload' href='/assets/fonts/EuclidCircularB-Semibold-WebS.woff2' as='font' type='font/woff2' crossorigin>
+" # add font stylesheet, e.g. <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 # THEME ICONS [optional!]
 # default icons can be overridden or new icons can be added using "icons" object
