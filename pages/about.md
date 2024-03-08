@@ -87,7 +87,7 @@ Datenschutz
 
 Zur [Datenschutzerklärung](/datenschutzerklaerung).
 
-Barrierefreihei
+Barrierefreiheit
 ---------------
 
 Zur [Barrierefreiheitserklärung](/barrierefreiheitserklaerung)
