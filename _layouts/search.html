@@ -64,7 +64,4 @@ custom-foot: js/lunr-js.html
     <p class="text-muted">{{ site.data.translations['_layouts']['search.html']['powered-by'][site.lang] | default:
         'Fuzzy search powered by <a href="https://lunrjs.com/" target="_blank" rel="noopener">Lunr.js</a>. <em>May take
             a second to load large collections!</em>' }}</p>
-    {% if site.google-cse-id %}<p class="text-muted">{{
-        site.data.translations['_layouts']['search.html']['google-search'][site.lang] | default: 'Alternatively, try
-        site search by' }} <a href="{{ '/search/google.html' | relative_url }}">Google CSE</a></p>{% endif %}
 </div>
