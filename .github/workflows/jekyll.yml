@@ -41,41 +41,42 @@ jobs:
           OMEKA_API_URL = os.environ.get("OMEKA_API_URL")
           KEY_IDENTITY = os.environ.get("KEY_IDENTITY")
           KEY_CREDENTIAL = os.environ.get("KEY_CREDENTIAL")
-          ITEM_SET_ID = os.environ.get("ITEM_SET_ID")
-
-          def get_items_from_collection(collection_id):
-              url = OMEKA_API_URL + "items"
-              all_items = []
-              params = {"item_set_id": collection_id, "key_identity": KEY_IDENTITY, "key_credential": KEY_CREDENTIAL}
-
-              while True:
-                  response = requests.get(url, params=params)
-                  if response.status_code != 200:
-                      break
-
-                  # Add the items from the current page to our list
-                  all_items.extend(response.json())
-
-                  # Check if there is a 'next' page
-                  links = requests.utils.parse_header_links(response.headers.get('Link', ''))
-                  next_link = [link for link in links if link['rel'] == 'next']
-                  if not next_link:
-                      break
-
-                  # Update the URL for the next request
-                  next_url = next_link[0]['url']
-                  url_parsed = urlparse(next_url)
-                  next_params = parse_qs(url_parsed.query)
-                  params.update(next_params)
-
-              return all_items
-
-
-          def map_columns(data):
-              return [{
-                  # "media": data.get("o:media"),
-                  "objectid": data.get("dcterms:identifier", [{}])[0].get("@value"),
-                  "parentid": None,
+          ITEM_SET_ID = os.environ.get("ITEM_SET_ID")      
+        
+          def get_media(item_id):
+              url = OMEKA_API_URL + "media/" + str(item_id)
+              params = {"key_identity": KEY_IDENTITY, "key_credential": KEY_CREDENTIAL}
+              response = requests.get(url, params=params)
+              if response.status_code != 200:
+                  print(f"Error: {response.status_code}")
+                  return None
+              return response.json()
+          
+          def map_columns(item_set):
+              return_list = []
+              for data in item_set:
+                  media_list = data.get("o:media", [])
+                  if len(media_list) > 1:
+                      media = get_media(media_list[0]["o:id"]) if media_list else {}
+                      media_data = create_media_data_dict(data, media, "compound_object")
+                      return_list.append(media_data)
+                      for index, media_item in enumerate(media_list):
+                          media = get_media(media_item.get("o:id"))
+                          media_data = create_media_data_dict(data, media, "compound_object", index)
+                          return_list.append(media_data)
+                  else:
+                      media = get_media(media_list[0]["o:id"]) if media_list else {}
+                      media_data = create_media_data_dict(data, media)
+                      return_list.append(media_data)
+              return return_list
+          
+          def create_media_data_dict(data, media, type=None, index=None):
+              media_id_suffix = f"_{index}" if index is not None else ""
+              media_url = media.get("thumbnail_display_urls", {}).get("large") if media and media.get("thumbnail_display_urls", {}).get("large", "").startswith("http") else None
+          
+              return {
+                  "objectid": data.get("dcterms:identifier", [{}])[0].get("@value").lower() + media_id_suffix,
+                  "parentid": None if index is None else data.get("dcterms:identifier", [{}])[0].get("@value").lower(),
                   "title": data.get("dcterms:title", [{}])[0].get("@value"),
                   "creator": data.get("dcterms:creator", [{}])[0].get("@value"),
                   "date": data.get("dcterms:date", [{}])[0].get("@value"),
@@ -94,15 +95,14 @@ jobs:
                   "license": data.get("dcterms:license", [{}])[0].get("@value"),
                   "isPartOf": data.get("dcterms:isPartOf", [{}])[0].get("@value"),
                   "isReferencedBy": data.get("dcterms:isReferencedBy", [{}])[0].get("@value"),
-                  "display_template": None,
+                  "display_template": type,
                   "object_location": None,
-                  # "object_location": x if (x := data.get("thumbnail_display_urls", {}).get("large")) and x.startswith("http") else None,
-                  "image_small": x if (x := data.get("thumbnail_display_urls", {}).get("large")) and x.startswith("http") else None,
-                  "image_thumb": x if (x := data.get("thumbnail_display_urls", {}).get("large")) and x.startswith("http") else None,
+                  "image_small": media_url,
+                  "image_thumb": media_url,
                   "image_alt_text": None,
-                  "object_transcript": None
-          } for data in item_set]
-
+                  "object_transcript": None,
+              }
+          
           item_set = get_items_from_collection(ITEM_SET_ID)
           item_set_mapped = map_columns(item_set)
           item_set_mapped_df = pd.DataFrame(item_set_mapped)
