@@ -100,7 +100,10 @@ def create_media_data_dict(data, media, type, index=None):
     )
     media_original_url = (
         media.get("o:original_url")
-        if media and media.get("o:original_url", "").startswith("http") and media.get("o:is_public")
+        if media and
+        (len(data.get("o:media", [])) > 1 and
+         index is not None) and
+        media.get("o:original_url", "").startswith("http") and media.get("o:is_public")
         else None
     )
     media_title = (
