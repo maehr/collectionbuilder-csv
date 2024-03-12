@@ -4,6 +4,8 @@ layout: page
 permalink: /datenschutzerklaerung.html
 ---
 
+# Datenschutzerklärung
+
 ## Präambel
 
 Die Stiftung Stadt.Geschichte.Basel legt grössten Wert auf den Schutz personenbezogener Daten. Personenbezogene Daten sind alle Daten, die auf Sie persönlich beziehbar sind, zum Beispiel Name, Adresse, E-Mail, Telefonnummer, Foto, Nutzerverhalten, IP-Adresse, etc.
