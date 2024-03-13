@@ -22,6 +22,8 @@ Diese Barrierefreiheitserklärung gilt als Selbstverpflichtung grundsätzlich f�
 
 Stadt.Geschichte.Basel arbeitet aktiv daran, die international anerkannten Richtlinien für barrierefreie Webinhalte ([Web Content Accessibility Guidelines, WCAG 2.1](https://www.w3.org/WAI/standards-guidelines/wcag/glance/)) umzusetzen und die relevanten Erfolgskriterien zu erfüllen. Die von der Web Accessibility Initiative des World Wide Web Consortiums (W3C) erarbeiteten WCAG-Richtlinien umfassen als Grundlagen für uneingeschränkten Zugang und Nutzung einer Website die vier Grundprinzipien Wahrnehmbar, Bedienbar, Verständlich und Robust.
 
+### Prinzipien
+
 #### Wahrnehmbar (_perceivable_)
 
 Dieses Grundprinzip garantiert den Umstand, dass Informationen und Komponenten der Benutzeroberfläche so dargestellt werden, dass sie wahrnehmbar sind. Beispielsweise reichen Bildbeschreibungen eines Bildes nicht aus, um vollständig sichtbar für alle Nutzer\*innen zu sein. Es ist daher zentral, jeweils neben den Bildunterschriften auch passende Alternativtexte zu schreiben, um für den Screenreader erkennbar zu sein.
@@ -40,7 +42,7 @@ Der Inhalt muss so robust sein, dass er von einer Vielzahl von user agents, eins
 
 ## Aktueller Status
 
-#### Schulung der Mitarbeitenden
+### Schulung der Mitarbeitenden
 
 Stadt.Geschichte.Basel bemüht sich, dass sich die Mitarbeiter\*innen fortlaufend im Bereich Barrierefreiheit weiterbilden und externe Schulungen absolvieren. So wurde beispielsweise ein Kurs von der ETH Zürich besucht, welcher den Umgang mit Alternativtexten vermittelte. Die Frage “wie schreibt man gute Alternativtexte” stand dabei im Zentrum. Anhand von Beispielen unterschiedlicher Bildtypen wurden die Unterschiede zwischen den Alternativtexten analysiert und besprochen. Die Erkenntnisse der Schulung flossen aktiv in die Bildbearbeitungen der Website hinein.
 
