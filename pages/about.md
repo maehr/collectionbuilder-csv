@@ -19,7 +19,7 @@ Die [Stiftung Stadt.Geschichte.Basel](https://stiftungen.stiftungschweiz.ch/orga
 
 * **Andreas Burckhardt**, Dr., ehemaliger Verwaltungsratspräsident Bâloise Group
 * **Christoph Lanz**, Jurist, ehemaliger Leiter Abteilung Recht und Sekretär des Verwaltungsrates MCH Group AG (vormals Schweizer Mustermesse)
-* **Antonia Schmidlin**, Dr., Historikerin, Gymnasiallehrerin, Vorstandsmitlied Verein Basler Geschichte
+* **Antonia Schmidlin**, Dr., Historikerin, Gymnasiallehrerin, Vorstandsmitglied Verein Basler Geschichte
 * **Barbara Schneider**, Alt Regierungsrätin Basel-Stadt, Richterin
 * **Marie-Louise Stamm**, Dr., ehem. Vorsitzende Appellationsgericht, Richterin
 * **Regina Wecker**, Prof. em. Dr., Historikerin, Vorstand Verein Basler Geschichte, Stiftungsratspräsidentin
