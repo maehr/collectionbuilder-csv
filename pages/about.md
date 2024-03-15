@@ -72,8 +72,7 @@ Medienanfragen richten Sie bitte direkt den [Christoph Merian Verlag](https://ww
 
 Weitere Lehrmittel von Kooperationspartner\*innen und Dritten finden sich auf dem Basler Bildungsserver unter [www.edubs.ch](https://www.edubs.ch/).
 
-Impressum
----------
+# Impressum
 
 Stiftung Stadt.Geschichte.Basel, Hirschgässlein 21, 4051 Basel. [info@stadtgeschichtebasel.ch](mailto:info@stadtgeschichtebasel.ch)
 
@@ -81,8 +80,8 @@ Redaktion: Moritz Mähr, Noëlle Schnegg und Cristina Wildisen-Münch
 
 ## Datenschutz
 
-Zur [Datenschutzerklärung](/datenschutzerklaerung).
+Zur [Datenschutzerklärung](https://stadtgeschichtebasel.ch//datenschutzerklaerung).
 
 ## Barrierefreiheit
 
-Zur [Barrierefreiheitserklärung](/barrierefreiheitserklaerung)
+Zur [Barrierefreiheitserklärung](https://stadtgeschichtebasel.ch//barrierefreiheitserklaerung).
