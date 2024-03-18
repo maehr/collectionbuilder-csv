@@ -1,3 +1,13 @@
+# cb-translate
+
+**cb-translate is a prototype in active development and subject to significant changes!**
+
+This repository is a prototype project to add localization to the CollectionBuilder-CSV template.
+This will allow users to set the site language in "_config.yml" and automatically translate all website interface elements into the selected language.
+Currently English (`en`), German (`de`), and Spanish (`es`) translations are complete.
+
+See ["docs/localization.md"](https://github.com/CollectionBuilder/cb-translate/blob/main/docs/localization.md) for more details.
+
 # CollectionBuilder-CSV
 
 CollectionBuilder-CSV is a robust and flexible "stand alone" template for creating digital collection and exhibit websites using Jekyll and a metadata CSV.
