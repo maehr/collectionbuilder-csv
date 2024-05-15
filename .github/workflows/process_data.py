@@ -209,9 +209,10 @@ def main():
     df = pd.DataFrame(combined_records)
 
     # Save to CSV
-    csv_path = "metadata.csv"
+    csv_path = "_data/sgb-metadata.csv"
+    os.makedirs(os.path.dirname(csv_path), exist_ok=True)
     df.to_csv(
-        "_data/sgb-metadata.csv", index=False, quoting=1
+        csv_path, index=False, quoting=1
     )  # quoting=1 for quoting all fields in the CSV
 
     print(f"CSV file has been saved to {csv_path}")
