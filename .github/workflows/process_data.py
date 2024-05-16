@@ -83,7 +83,7 @@ def extract_prop_uri(props, prop_id):
         (
             prop.get("@id", "")
             if "o:label" not in prop
-            else f"{prop.get('o:label', '')}<{prop.get('@id', '')}>"
+            else f"[{prop.get('o:label', '')}]({prop.get('@id', '')})"
             for prop in props
             if prop.get("property_id") == prop_id
         ),
@@ -96,7 +96,7 @@ def extract_combined_list(props):
     uris = [
         prop.get("@id", "")
         if "o:label" not in prop
-        else f"{prop.get('o:label', '')}<{prop.get('@id', '')}>"
+        else f"[{prop.get('o:label', '')}]({prop.get('@id', '')})"
         for prop in props
         if "@id" in prop
     ]
