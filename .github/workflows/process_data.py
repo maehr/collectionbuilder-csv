@@ -143,6 +143,8 @@ def infer_display_template(mime_type):
         return "image"
     elif "pdf" in mime_type:
         return "pdf"
+    elif "geo+json" in mime_type:
+        return "geodata"
     else:
         return "record"
 
