@@ -112,7 +112,7 @@ def extract_item_data(item):
         download_file(image_url, local_image_path)
 
     return {
-        "objectid": item["o:id"],
+        "objectid": extract_prop_value(item.get("dcterms:identifier", []), 10),
         "parentid": "",
         "title": extract_prop_value(item.get("dcterms:title", []), 1),
         "description": extract_prop_value(item.get("dcterms:description", []), 4),
@@ -149,7 +149,7 @@ def infer_display_template(mime_type):
         return "record"
 
 
-def extract_media_data(media, item_id):
+def extract_media_data(media, item_dc_identifier):
     mime_type = media.get("o:media_type", "").lower()
     display_template = infer_display_template(mime_type)
 
@@ -160,8 +160,8 @@ def extract_media_data(media, item_id):
         download_file(image_url, local_image_path)
 
     return {
-        "objectid": media["o:id"],
-        "parentid": item_id,
+        "objectid": extract_prop_value(media.get("dcterms:identifier", []), 10),
+        "parentid": item_dc_identifier,
         "title": extract_prop_value(media.get("dcterms:title", []), 1),
         "description": extract_prop_value(media.get("dcterms:description", []), 4),
         "subject": extract_combined_list(media.get("dcterms:subject", [])),
@@ -193,16 +193,18 @@ def main():
     items_data = get_items_from_collection(collection_id)
 
     # Extract item data
-    item_records = [extract_item_data(item) for item in items_data]
-
-    # Extract media data for each item
+    item_records = []
     media_records = []
     for item in items_data:
-        item_id = item["o:id"]
-        media_data = get_media(item_id)
+        item_record = extract_item_data(item)
+        item_records.append(item_record)
+        
+        # Extract media data for each item
+        item_dc_identifier = item_record["objectid"]
+        media_data = get_media(item["o:id"])
         if media_data:
             for media in media_data:
-                media_records.append(extract_media_data(media, item_id))
+                media_records.append(extract_media_data(media, item_dc_identifier))
 
     # Combine item and media records
     combined_records = item_records + media_records
