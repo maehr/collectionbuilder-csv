@@ -141,6 +141,8 @@ def extract_item_data(item):
         "license": extract_prop_value(item.get("dcterms:license", []), 49),
         "display_template": "compound_object",
         "object_location": local_image_path,
+        # FIXME
+        # "object_location": media.get("o:original_url", ""),
         "image_small": local_image_path,
         "image_thumb": local_image_path,
         "image_alt_text": item.get("o:alt_text", ""),
@@ -193,6 +195,8 @@ def extract_media_data(media, item_dc_identifier):
         "license": extract_prop_value(media.get("dcterms:license", []), 49),
         "display_template": display_template,
         "object_location": local_image_path,
+        # FIXME
+        # "object_location": media.get("o:original_url", ""),
         "image_small": local_image_path,
         "image_thumb": local_image_path,
         "image_alt_text": media.get("o:alt_text", ""),
