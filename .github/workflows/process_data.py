@@ -114,7 +114,8 @@ def extract_item_data(item):
     image_url = item.get("thumbnail_display_urls", {}).get("large", "")
     local_image_path = ""
     if image_url and is_valid_url(image_url):
-        local_image_path = f"objects/{item['o:id']}.jpg"
+        filename = os.path.basename(image_url)
+        local_image_path = f"objects/{filename}"
         if not os.path.exists(local_image_path):
             download_file(image_url, local_image_path)
 
@@ -165,8 +166,10 @@ def extract_media_data(media, item_dc_identifier):
     image_url = media.get("thumbnail_display_urls", {}).get("large", "")
     local_image_path = ""
     if image_url and is_valid_url(image_url):
-        local_image_path = f"objects/{media['o:id']}.jpg"
-        download_file(image_url, local_image_path)
+        filename = os.path.basename(image_url)
+        local_image_path = f"objects/{filename}"
+        if not os.path.exists(local_image_path):
+            download_file(image_url, local_image_path)
 
     # Extract media data
     return {
