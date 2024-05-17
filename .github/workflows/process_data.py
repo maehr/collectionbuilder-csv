@@ -1,5 +1,5 @@
 import os
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 import pandas as pd
 import requests
@@ -66,6 +66,15 @@ def download_file(url, dest_path):
         print(f"Other error occurred: {err}")
 
 
+# Function to check if URL is valid
+def is_valid_url(url):
+    try:
+        result = urlparse(url)
+        return all([result.scheme, result.netloc])
+    except ValueError:
+        return False
+
+
 # Helper functions to extract data
 def extract_prop_value(props, prop_id):
     return next(
@@ -81,9 +90,7 @@ def extract_prop_value(props, prop_id):
 def extract_prop_uri(props, prop_id):
     return next(
         (
-            prop.get("@id", "")
-            if "o:label" not in prop
-            else f"[{prop.get('o:label', '')}]({prop.get('@id', '')})"
+            f"[{prop.get('o:label', '')}]({prop.get('@id', '')})"
             for prop in props
             if prop.get("property_id") == prop_id
         ),
@@ -94,9 +101,7 @@ def extract_prop_uri(props, prop_id):
 def extract_combined_list(props):
     values = [prop.get("@value", "") for prop in props if "@value" in prop]
     uris = [
-        prop.get("@id", "")
-        if "o:label" not in prop
-        else f"[{prop.get('o:label', '')}]({prop.get('@id', '')})"
+        f"[{prop.get('o:label', '')}]({prop.get('@id', '')})"
         for prop in props
         if "@id" in prop
     ]
@@ -105,12 +110,15 @@ def extract_combined_list(props):
 
 
 def extract_item_data(item):
+    # Download the thumbnail image if available and valid
     image_url = item.get("thumbnail_display_urls", {}).get("large", "")
     local_image_path = ""
-    if image_url:
+    if image_url and is_valid_url(image_url):
         local_image_path = f"objects/{item['o:id']}.jpg"
-        download_file(image_url, local_image_path)
+        if not os.path.exists(local_image_path):
+            download_file(image_url, local_image_path)
 
+    # Extract item data
     return {
         "objectid": extract_prop_value(item.get("dcterms:identifier", []), 10),
         "parentid": "",
@@ -153,12 +161,14 @@ def extract_media_data(media, item_dc_identifier):
     mime_type = media.get("o:media_type", "").lower()
     display_template = infer_display_template(mime_type)
 
+    # Download the thumbnail image if available and valid
     image_url = media.get("thumbnail_display_urls", {}).get("large", "")
     local_image_path = ""
-    if image_url:
+    if image_url and is_valid_url(image_url):
         local_image_path = f"objects/{media['o:id']}.jpg"
         download_file(image_url, local_image_path)
 
+    # Extract media data
     return {
         "objectid": extract_prop_value(media.get("dcterms:identifier", []), 10),
         "parentid": item_dc_identifier,
