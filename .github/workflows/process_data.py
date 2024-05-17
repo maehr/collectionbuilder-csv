@@ -198,7 +198,7 @@ def main():
     for item in items_data:
         item_record = extract_item_data(item)
         item_records.append(item_record)
-        
+
         # Extract media data for each item
         item_dc_identifier = item_record["objectid"]
         media_data = get_media(item["o:id"])
@@ -215,9 +215,7 @@ def main():
     # Save to CSV
     csv_path = "_data/sgb-metadata.csv"
     os.makedirs(os.path.dirname(csv_path), exist_ok=True)
-    df.to_csv(
-        csv_path, index=False, quoting=1
-    )  # quoting=1 for quoting all fields in the CSV
+    df.to_csv(csv_path, index=False)
 
     print(f"CSV file has been saved to {csv_path}")
 
