@@ -146,20 +146,20 @@ def extract_item_data(item):
     }
 
 
-def infer_display_template(mime_type):
-    if "image" in mime_type:
+def infer_display_template(format_value):
+    if "image" in format_value.lower():
         return "image"
-    elif "pdf" in mime_type:
+    elif "pdf" in format_value.lower():
         return "pdf"
-    elif "geo+json" in mime_type:
+    elif "geo+json" in format_value.lower():
         return "geodata"
     else:
         return "record"
 
 
 def extract_media_data(media, item_dc_identifier):
-    mime_type = media.get("o:media_type", "").lower()
-    display_template = infer_display_template(mime_type)
+    format_value = extract_prop_value(media.get("dcterms:format", []), 9)
+    display_template = infer_display_template(format_value)
 
     # Download the thumbnail image if available and valid
     image_url = media.get("thumbnail_display_urls", {}).get("large", "")
@@ -182,7 +182,7 @@ def extract_media_data(media, item_dc_identifier):
         "source": extract_combined_list(media.get("dcterms:source", [])),
         "date": extract_prop_value(media.get("dcterms:date", []), 7),
         "type": extract_prop_uri(media.get("dcterms:type", []), 8),
-        "format": extract_prop_value(media.get("dcterms:format", []), 9),
+        "format": format_value,
         "extent": extract_prop_value(media.get("dcterms:extent", []), 25),
         "language": extract_prop_value(media.get("dcterms:language", []), 12),
         "relation": extract_combined_list(media.get("dcterms:relation", [])),
