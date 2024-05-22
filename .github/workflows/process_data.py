@@ -120,6 +120,10 @@ def extract_item_data(item):
             download_file(image_url, local_image_path)
 
     # Extract item data
+    object_location = (
+        item.get("o:original_url", "") if item.get("o:is_public", False) else ""
+    )
+
     return {
         "objectid": extract_prop_value(item.get("dcterms:identifier", []), 10),
         "parentid": "",
@@ -140,9 +144,7 @@ def extract_item_data(item):
         "rights": extract_prop_value(item.get("dcterms:rights", []), 15),
         "license": extract_prop_value(item.get("dcterms:license", []), 49),
         "display_template": "compound_object",
-        "object_location": local_image_path,
-        # FIXME
-        # "object_location": media.get("o:original_url", ""),
+        "object_location": object_location,
         "image_small": local_image_path,
         "image_thumb": local_image_path,
         "image_alt_text": item.get("o:alt_text", ""),
@@ -174,6 +176,10 @@ def extract_media_data(media, item_dc_identifier):
             download_file(image_url, local_image_path)
 
     # Extract media data
+    object_location = (
+        media.get("o:original_url", "") if media.get("o:is_public", False) else ""
+    )
+
     return {
         "objectid": extract_prop_value(media.get("dcterms:identifier", []), 10),
         "parentid": item_dc_identifier,
@@ -194,9 +200,7 @@ def extract_media_data(media, item_dc_identifier):
         "rights": extract_prop_value(media.get("dcterms:rights", []), 15),
         "license": extract_prop_value(media.get("dcterms:license", []), 49),
         "display_template": display_template,
-        "object_location": local_image_path,
-        # FIXME
-        # "object_location": media.get("o:original_url", ""),
+        "object_location": object_location,
         "image_small": local_image_path,
         "image_thumb": local_image_path,
         "image_alt_text": media.get("o:alt_text", ""),
