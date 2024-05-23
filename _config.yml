@@ -27,9 +27,9 @@ description: "Auf der Forschungsdatenplattform von Stadt.Geschichte.Basel finden
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
 keywords: basel;history;stadtgeschichte
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
-author: Stadt.Geschichte.Basel
+author: CollectionBuilder
 # language of the site, used in meta tags and GUI elements
-lang: de
+lang: en
 
 ##########
 # COLLECTION SETTINGS
@@ -54,10 +54,10 @@ report-email: info@stadtgeschichtebasel.ch
 #   Enter information for your organization (replacing the CDIL links and name below) if you'd like to brand your site with a logo
 #   To remove the branding, comment out these values, or delete them. 
 #
-organization-name: "Stadt.Geschichte.Basel"
-organization-link: https://stadtgeschichtebasel.ch/
-organization-logo-banner: assets/img/logo.svg
-organization-logo-nav: assets/img/logo.svg
+organization-name: "Center for Digital Inquiry and Learning (CDIL)"
+organization-link: https://cdil.lib.uidaho.edu/
+organization-logo-banner: https://cdil.lib.uidaho.edu/storying-extinction/assets/img/cdil.png
+organization-logo-nav: https://cdil.lib.uidaho.edu/assets/img/logo.png
 
 ##########
 # ROBOTS EXCLUDE
