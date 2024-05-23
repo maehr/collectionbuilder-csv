@@ -584,7 +584,7 @@ _layouts:
     random:
       en: "Random"
       es: "Aleatorio"
-      de: "Zufällig"
+      de: "Zufall"
     title:
       en: "Title"
       es: "Título"
