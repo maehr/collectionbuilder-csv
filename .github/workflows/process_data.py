@@ -119,11 +119,6 @@ def extract_item_data(item):
         if not os.path.exists(local_image_path):
             download_file(image_url, local_image_path)
 
-    # Extract item data
-    object_location = (
-        item.get("o:original_url", "") if item.get("o:is_public", False) else ""
-    )
-
     return {
         "objectid": extract_prop_value(item.get("dcterms:identifier", []), 10),
         "parentid": "",
@@ -144,7 +139,7 @@ def extract_item_data(item):
         "rights": extract_prop_value(item.get("dcterms:rights", []), 15),
         "license": extract_prop_value(item.get("dcterms:license", []), 49),
         "display_template": "compound_object",
-        "object_location": object_location,
+        "object_location": "",
         "image_small": local_image_path,
         "image_thumb": local_image_path,
         "image_alt_text": item.get("o:alt_text", ""),
