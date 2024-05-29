@@ -1,3 +1,4 @@
+import logging
 import os
 from urllib.parse import urljoin, urlparse
 
@@ -9,6 +10,11 @@ OMEKA_API_URL = os.getenv("OMEKA_API_URL")
 KEY_IDENTITY = os.getenv("KEY_IDENTITY")
 KEY_CREDENTIAL = os.getenv("KEY_CREDENTIAL")
 ITEM_SET_ID = os.getenv("ITEM_SET_ID")
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 # Function to get items from a collection
@@ -25,7 +31,7 @@ def get_items_from_collection(collection_id):
     while True:
         response = requests.get(url, params=params)
         if response.status_code != 200:
-            print(f"Error: {response.status_code}")
+            logging.error(f"Error: {response.status_code}")
             break
         items = response.json()
         all_items.extend(items)
@@ -46,7 +52,7 @@ def get_media(item_id):
     params = {"key_identity": KEY_IDENTITY, "key_credential": KEY_CREDENTIAL}
     response = requests.get(url, params=params)
     if response.status_code != 200:
-        print(f"Error: {response.status_code}")
+        logging.error(f"Error: {response.status_code}")
         return None
     return response.json()
 
@@ -61,9 +67,9 @@ def download_file(url, dest_path):
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
     except requests.exceptions.HTTPError as http_err:
-        print(f"HTTP error occurred: {http_err}")
+        logging.error(f"HTTP error occurred: {http_err}")
     except Exception as err:
-        print(f"Other error occurred: {err}")
+        logging.error(f"Other error occurred: {err}")
 
 
 # Function to check if URL is valid
@@ -118,6 +124,9 @@ def extract_item_data(item):
         local_image_path = f"objects/{filename}"
         if not os.path.exists(local_image_path):
             download_file(image_url, local_image_path)
+
+
+    logging.info(f"Item ID: {item['o:id']}")
 
     return {
         "objectid": extract_prop_value(item.get("dcterms:identifier", []), 10),
@@ -174,6 +183,9 @@ def extract_media_data(media, item_dc_identifier):
     object_location = (
         media.get("o:original_url", "") if media.get("o:is_public", False) else ""
     )
+
+    logging.info(f"Media ID: {media['o:id']}")
+    logging.info(f"is_public: {media.get('o:is_public')}")
 
     return {
         "objectid": extract_prop_value(media.get("dcterms:identifier", []), 10),
@@ -233,7 +245,7 @@ def main():
     os.makedirs(os.path.dirname(csv_path), exist_ok=True)
     df.to_csv(csv_path, index=False)
 
-    print(f"CSV file has been saved to {csv_path}")
+    logging.info(f"CSV file has been saved to {csv_path}")
 
 
 if __name__ == "__main__":
