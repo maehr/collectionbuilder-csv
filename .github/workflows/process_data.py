@@ -105,9 +105,13 @@ def extract_prop_uri(props, prop_id):
 
 
 def extract_combined_list(props):
-    values = [prop.get("@value", "") for prop in props if "@value" in prop]
+    values = [
+        prop.get("@value", "").replace(";", "&#59")
+        for prop in props
+        if "@value" in prop
+    ]
     uris = [
-        f"[{prop.get('o:label', '')}]({prop.get('@id', '')})"
+        f"[{prop.get('o:label', '').replace(';', '&#59')}]({prop.get('@id', '').replace(';', '&#59')})"
         for prop in props
         if "@id" in prop
     ]
@@ -124,7 +128,6 @@ def extract_item_data(item):
         local_image_path = f"objects/{filename}"
         if not os.path.exists(local_image_path):
             download_file(image_url, local_image_path)
-
 
     logging.info(f"Item ID: {item['o:id']}")
 
