@@ -216,33 +216,8 @@ def extract_media_data(media, item_dc_identifier):
         "image_alt_text": media.get("o:alt_text", ""),
     }
 
-# Function to get collection in different formats
-def get_collection_in_format(collection_id, format_type):
-    url = urljoin(OMEKA_API_URL, f"item_sets/{collection_id}")
-    headers = {"Accept": f"application/{format_type}"}
-    params = {
-        "key_identity": KEY_IDENTITY,
-        "key_credential": KEY_CREDENTIAL,
-    }
 
-    response = requests.get(url, headers=headers, params=params)
-    if response.status_code != 200:
-        logging.error(f"Error fetching collection in {format_type} format: {response.status_code}")
-        return None
-    return response.text
-
-
-# Function to save the collection in different formats
-def save_collection_in_format(collection_id, format_type, extension):
-    data = get_collection_in_format(collection_id, format_type)
-    if data:
-        file_path = f"_data/collection_{collection_id}.{extension}"
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(data)
-        logging.info(f"Collection saved in {format_type} format to {file_path}")
-
-
-# Main function to download item set and generate CSV and other formats
+# Main function to download item set and generate CSV
 def main():
     # Download item set
     collection_id = ITEM_SET_ID
@@ -265,22 +240,16 @@ def main():
     # Combine item and media records
     combined_records = item_records + media_records
 
-    # Create DataFrame and save as CSV
+    # Create DataFrame
     df = pd.DataFrame(combined_records)
+
+    # Save to CSV
     csv_path = "_data/sgb-metadata.csv"
     os.makedirs(os.path.dirname(csv_path), exist_ok=True)
     df.to_csv(csv_path, index=False)
+
     logging.info(f"CSV file has been saved to {csv_path}")
 
-    # Save collection in other formats
-    formats = [
-        ("jsonld", "jsonld"),
-        ("rdf+xml", "rdfxml"),
-        ("n-triples", "nt"),
-        ("turtle", "ttl")
-    ]
-    for format_type, extension in formats:
-        save_collection_in_format(collection_id, format_type, extension)
 
 if __name__ == "__main__":
     main()
